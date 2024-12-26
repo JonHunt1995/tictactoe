@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class main {
     public static void main(String[] args) {
         GameBoard board = new GameBoard();
         Scanner scanner = new Scanner(System.in);
