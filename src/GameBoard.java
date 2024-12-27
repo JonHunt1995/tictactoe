@@ -44,9 +44,10 @@ public class GameBoard {
         if (turn % 2 == 0) c = 'O';
         this.board[x][y] = c;
     }
+
     public void printBoard() {
         for (char[] row : this.board) {
-            System.out.println(row);
+            System.out.println(" " + row[0] + " " + row[1] + " " + row[2]);
         }
         System.out.println("\n");
     }
