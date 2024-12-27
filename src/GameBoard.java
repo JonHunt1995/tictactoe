@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 public class GameBoard {
+    // Attributes
     char[][] board = new char[3][3];
     char defaultChar = ' ';
-    // methods
+    // Methods
     public void initializeBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -11,17 +12,19 @@ public class GameBoard {
             }
         }
     }
-    public boolean availableSquares(char[][] board) {
+    public boolean noAvailableSquares() {
+        char[][] board = this.board;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (this.board[i][j] == defaultChar) {
+                if (board[i][j] == defaultChar) {
                     return false;
                 }
             }
         }
         return true;
     }
-    public boolean hasWon(char[][] board) {
+    public boolean hasWon() {
+        char[][] board = this.board;
         if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] != defaultChar) {
             return true;
         } else if (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != defaultChar) {
