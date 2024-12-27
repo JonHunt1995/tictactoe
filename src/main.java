@@ -11,7 +11,8 @@ public class main {
             System.out.println("Player " + playerNum + " turn " + turn);
             System.out.println("Enter number for the square you would like to play");
             inputString = scanner.next();
-            if (inputString.length() != 1 || !Character.isDigit(inputString.charAt(0))) {
+            if (inputString.length() != 1 || !Character.isDigit(inputString.charAt(0)) || this.board[x][y] == defaultChar) {
+                System.out.println("Invalid move");
                 getPlayerInput(string inputString, int turn, int playerNum);
             }
             int squareNumber = inputString.parseInt();

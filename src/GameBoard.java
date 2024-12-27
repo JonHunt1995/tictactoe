@@ -34,18 +34,15 @@ public class GameBoard {
         }
         return false;
     }
-    public void insertChar(int x, int y, int turn) {
-        assert(x >= 1 && x <= 3);
-        assert(y >= 1 && y <= 3);
+    public void insertChar(int squareNumber, int turn) {
+        squareNumber--;
+        assert(squareNumber >= 1 && squareNumber <= 3);
         char c = 'X';
+        int x = squareNumber / 3;
+        int y = squareNumber % 3;
 
         if (turn % 2 == 0) c = 'O';
-        if (this.board[x - 1][y - 1] == defaultChar) {
-            this.board[x - 1][y - 1] = c;
-        } else {
-            System.out.println("Invalid move");
-        }
-
+        this.board[x][y] = c;
     }
     public void printBoard() {
         for (char[] row : this.board) {
