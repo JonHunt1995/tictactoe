@@ -1,6 +1,6 @@
 public class GameBoard {
     char[][] board = new char[3][3];
-    char defaultChar = '#';
+    char defaultChar = ' ';
     // methods
     public void initializeBoard() {
         for (int i = 0; i < 3; i++) {
@@ -55,8 +55,8 @@ public class GameBoard {
     }
     public void showCoords() {
         System.out.println("Here are the coordinates for the grid! \n");
-        System.out.println("1,1 | 1,2 | 1,3");
-        System.out.println("2,1 | 2,2 | 2,3");
-        System.out.println("3,1 | 3,2 | 3,3");
+        System.out.println("1 | 2 | 3");
+        System.out.println("4 | 5 | 6");
+        System.out.println("7 | 8 | 9");
     }
 }
