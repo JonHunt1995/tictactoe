@@ -7,18 +7,7 @@ public class main {
         int turn = 1;
         int playerNum = 1;
         boolean valid = true;
-        void getPlayerInput(string inputString, int turn, int playerNum) {
-            System.out.println("Player " + playerNum + " turn " + turn);
-            System.out.println("Enter number for the square you would like to play");
-            inputString = scanner.next();
-            if (inputString.length() != 1 || !Character.isDigit(inputString.charAt(0)) || this.board[x][y] == defaultChar) {
-                System.out.println("Invalid move");
-                getPlayerInput(string inputString, int turn, int playerNum);
-            }
-            int squareNumber = inputString.parseInt();
 
-            board.insertChar(squareNumber, turn);
-        }
 
         board.initializeBoard();
         board.printBoard();
@@ -33,11 +22,7 @@ public class main {
             }
             board.showCoords();
 
-            System.out.println("Player " + playerNum + " turn " + turn);
-            System.out.println("Enter number for the square you would like to play");
-            inputString = scanner.next();
-
-            getPlayerInput(inputString, turn, playerNum);
+            board.getPlayerInput(scanner, turn, playerNum);
             board.printBoard();
             turn++;
         }

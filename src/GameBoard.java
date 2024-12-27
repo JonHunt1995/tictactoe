@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class GameBoard {
     char[][] board = new char[3][3];
     char defaultChar = ' ';
@@ -34,7 +36,8 @@ public class GameBoard {
         }
         return false;
     }
-    public void insertChar(int squareNumber, int turn) {
+
+    public void insertChar(int squareNumber, int turn, Scanner scanner, int playerNum) {
         squareNumber--;
         assert(squareNumber >= 1 && squareNumber <= 3);
         char c = 'X';
@@ -42,12 +45,16 @@ public class GameBoard {
         int y = squareNumber % 3;
 
         if (turn % 2 == 0) c = 'O';
+        if (this.board[x][y] != defaultChar) {
+            System.out.println("Invalid Move");
+            getPlayerInput(scanner, turn, playerNum);
+        };
         this.board[x][y] = c;
     }
 
     public void printBoard() {
         for (char[] row : this.board) {
-            System.out.println(" " + row[0] + " " + row[1] + " " + row[2]);
+            System.out.println(row[0] + "|" + row[1] + "|" + row[2]);
         }
         System.out.println("\n");
     }
@@ -56,5 +63,24 @@ public class GameBoard {
         System.out.println("1 | 2 | 3");
         System.out.println("4 | 5 | 6");
         System.out.println("7 | 8 | 9");
+    }
+
+    public void getPlayerInput(Scanner scanner, int turn, int playerNum) {
+        int squareNumber = -1;
+        System.out.println("Player " + playerNum + " turn " + turn);
+        System.out.println("Enter number for the square you would like to play");
+        String inputString = scanner.nextLine();
+        // Validating Player Input
+        if (inputString.length() != 1 || !Character.isDigit(inputString.charAt(0))) {
+            System.out.println("Invalid move");
+            System.out.println("Try again. Pick a square");
+            // If Input Is Invalid, Recursively Call getPlayerInput Function
+            getPlayerInput(scanner, turn, playerNum);
+        } else {
+            squareNumber = Integer.parseInt(inputString);
+        }
+        if (squareNumber >= 1) {
+            this.insertChar(squareNumber, turn, scanner, playerNum);
+        }
     }
 }
